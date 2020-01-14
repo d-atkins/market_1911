@@ -19,14 +19,6 @@ class Market
   end
 
   def sorted_item_list
-    # item_history = @vendors.map {|vendor| vendor.inventory}
-    # items_in_stock = item_history.map do |items|
-    #   items.find_all do |item, amount|
-    #     amount >= 0
-    #     require "pry"; binding.pry
-    #   end
-    # end
-
     @vendors.map {|vendor| vendor.items_in_stock.map {|item| item.name}}.flatten.uniq.sort
   end
 end
