@@ -55,6 +55,7 @@ class VendorTest < Minitest::Test
 
   def test_it_can_find_items_in_stock
     @vendor.stock(@item1, 30)
+    @vendor.stock(@item2, 0)
 
     assert_equal ({@item1 => 30}), @vendor.items_in_stock
   end
