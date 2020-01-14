@@ -16,7 +16,7 @@ class Vendor
 
   def items_in_stock
     @inventory.reduce({}) do |acc, (item, amount)|
-      acc[item] = amount if amount > 0
+      acc[item] = amount if in_stock?(item)
       acc
     end
   end
