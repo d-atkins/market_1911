@@ -58,4 +58,14 @@ class VendorTest < Minitest::Test
 
     assert_equal ({@item1 => 30}), @vendor.items_in_stock
   end
+
+  def test_it_can_sell_items
+    @vendor.stock(@item1, 30)
+
+    assert_equal 30, @vendor.check_stock(@item1)
+    assert_equal false, @vendor.sell(@item1, 31)
+    assert_equal 30, @vendor.check_stock(@item1)
+    assert_equal true, @vendor.sell(@item1, 29)
+    assert_equal 1, @vendor.check_stock(@item1)
+  end
 end

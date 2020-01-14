@@ -20,4 +20,13 @@ class Vendor
       acc
     end
   end
+
+  def sell(item, amount)
+    if check_stock(item) >= amount
+      @inventory[item] -= amount
+      true
+    else
+      false
+    end
+  end
 end
