@@ -37,4 +37,10 @@ class Market
       acc
     end
   end
+
+  def sell(item, amount)
+    return false if total_inventory[item] < amount
+    @vendors.each
+    true
+  end
 end
