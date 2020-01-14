@@ -18,7 +18,18 @@ class Market
     @vendors.find_all {|vendor| vendor.check_stock(item) > 0}
   end
 
+  def items_by_vendor
+    @vendors.reduce({}) do |acc, vendor|
+      acc[vendor] = vendor.items_in_stock
+      acc
+    end
+  end
+
   def sorted_item_list
     @vendors.map {|vendor| vendor.items_in_stock.map {|item| item.name}}.flatten.uniq.sort
   end
+
+  # def total_inventory
+  #
+  # end
 end
