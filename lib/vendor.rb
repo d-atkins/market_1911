@@ -13,4 +13,8 @@ class Vendor
   def stock(item, amount)
     @inventory[item] += amount
   end
+
+  def items_in_stock
+    @inventory.map {|item, amount| item if check_stock(item) > 0}
+  end
 end
