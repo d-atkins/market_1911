@@ -28,9 +28,17 @@ class Vendor
   def sell(item, amount)
     if check_stock(item) >= amount
       @inventory[item] -= amount
-      true
+      amount
     else
-      false
+      0
+    end
+  end
+
+  def sell_all_possible(item, amount)
+    if short?(item, amount)
+      sell(item, @inventory[item])
+    else
+      sell(item, amount)
     end
   end
 end

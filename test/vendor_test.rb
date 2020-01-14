@@ -71,9 +71,18 @@ class VendorTest < Minitest::Test
     @vendor.stock(@item1, 30)
 
     assert_equal 30, @vendor.check_stock(@item1)
-    assert_equal false, @vendor.sell(@item1, 31)
+    assert_equal 0, @vendor.sell(@item1, 31)
     assert_equal 30, @vendor.check_stock(@item1)
-    assert_equal true, @vendor.sell(@item1, 29)
+    assert_equal 29, @vendor.sell(@item1, 29)
     assert_equal 1, @vendor.check_stock(@item1)
+  end
+
+  def test_it_can_sell_all_possible
+    @vendor.stock(@item1, 30)
+
+    assert_equal 5, @vendor.sell_all_possible(@item1, 5)
+    assert_equal 25, @vendor.check_stock(@item1)
+    assert_equal 25, @vendor.sell_all_possible(@item1, 500)
+    assert_equal 0, @vendor.check_stock(@item1)
   end
 end
