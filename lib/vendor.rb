@@ -11,7 +11,7 @@ class Vendor
   end
 
   def stock(item, amount)
-    @inventory[item] += amount
+    @inventory[item] += amount if item.class == Item
   end
 
   def items_in_stock
