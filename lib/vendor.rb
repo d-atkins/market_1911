@@ -25,6 +25,10 @@ class Vendor
     check_stock(item) < amount
   end
 
+  def in_stock?(item)
+    check_stock(item) > 0
+  end
+
   def sell(item, amount)
     if check_stock(item) >= amount
       @inventory[item] -= amount
