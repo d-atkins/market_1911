@@ -41,7 +41,7 @@ class Market
   def sell(item, amount)
     return false if total_inventory[item] < amount
     eligible_vendors = @vendors.find_all {|vendor| vendor.in_stock?(item)}
-    until amount == 0 do
+    until amount <= 0 do
       amount -= eligible_vendors[0].sell_all_possible(item, amount)
       eligible_vendors.shift
     end
