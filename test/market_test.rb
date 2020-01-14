@@ -30,4 +30,12 @@ class MarketTest < Minitest::Test
     assert_equal "South Pearl Street Farmers Market", @market.name
     assert_equal [], @market.vendors
   end
+
+  def test_it_can_add_vendors
+    @market.add_vendor(@vendor1)
+    @market.add_vendor(@vendor2)
+    @market.add_vendor(@vendor3)
+
+    assert_equal [@vendor1, @vendor2, @vendor3], @market.vendors
+  end
 end
