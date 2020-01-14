@@ -15,6 +15,9 @@ class Vendor
   end
 
   def items_in_stock
-    @inventory.map {|item, amount| item if check_stock(item) > 0}
+    @inventory.reduce({}) do |acc, (item, amount)|
+      acc[item] = amount if amount > 0
+      acc
+    end
   end
 end
